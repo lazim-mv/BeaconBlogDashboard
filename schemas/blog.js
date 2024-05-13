@@ -13,8 +13,8 @@ export default {
       type: 'slug',
       title: 'Slug of blog article',
       options: {
-        source:"title"
-      }
+        source: 'title',
+      },
     },
     {
       name: 'titleImage',
@@ -33,8 +33,13 @@ export default {
     },
     {
       name: 'description',
-      type: 'text',
+      type: 'array',
       title: 'Description',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
     },
   ],
 }
