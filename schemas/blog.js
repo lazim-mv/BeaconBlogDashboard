@@ -1,45 +1,91 @@
-export default {
+import {defineField, defineType} from 'sanity'
+
+export const blogType = defineType({
   name: 'blog',
-  type: 'document',
   title: 'Blog',
+  type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
+      title: 'Title',
       type: 'string',
-      title: 'Blog Heading',
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug of blog article',
-      options: {
-        source: 'title',
-      },
-    },
-    {
-      name: 'titleImage',
-      type: 'image',
-      title: 'Image',
-    },
-    {
-      name: 'date',
-      type: 'date',
-      title: 'Select the date',
-    },
-    {
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Small Heading',
+      type: 'string',
+    }),
+    defineField({
       name: 'location',
+      title: 'Location',
       type: 'string',
-      title: 'Enter Location',
-    },
-    {
-      name: 'description',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Main Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published At',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'subtitle',
+        maxLength: 96,
+      },
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
       type: 'array',
-      title: 'Description',
       of: [
         {
-          type: 'block',
+          type: 'object',
+          fields: [
+            {
+              name: 'content',
+              title: 'Content',
+              type: 'text',
+            },
+            {
+              name: 'type',
+              title: 'Type',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Subheading', value: 'subheading'},
+                  {title: 'Content', value: 'content'},
+                  {title: 'Unordered List', value: 'ul'},
+                  {title: 'Content Image', value: 'image'},
+                ],
+              },
+            },
+            {
+              name: 'contentImage', // Make sure the field name matches your usage
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+            },
+          ],
         },
       ],
-    },
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{type: 'string'}],
+      initialValue: ['All'],
+    }),
   ],
-}
+})
