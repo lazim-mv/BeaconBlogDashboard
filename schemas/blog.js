@@ -65,6 +65,7 @@ export const blogType = defineType({
                   {title: 'Content', value: 'content'},
                   {title: 'Unordered List', value: 'ul'},
                   {title: 'Content Image', value: 'image'},
+                  {title: 'Hyper Link', value: 'hyperLink'},
                 ],
               },
             },
@@ -75,6 +76,17 @@ export const blogType = defineType({
               options: {
                 hotspot: true,
               },
+            },
+            {
+              name: 'ul',
+              title: 'Unordered List Items',
+              type: 'array',
+              of: [{type: 'string'}],
+            },
+            {
+              name: 'hyperLink',
+              title: 'Hyper Link',
+              type: 'string',
             },
           ],
         },
