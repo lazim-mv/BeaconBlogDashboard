@@ -61,7 +61,8 @@ export const blogType = defineType({
               type: 'string',
               options: {
                 list: [
-                  {title: 'Subheading', value: 'subheading'},
+                  {title: 'Main Heading', value: 'mainHeading'},
+                  {title: 'Sub Heading', value: 'subheading'},
                   {title: 'Content', value: 'content'},
                   {title: 'Unordered List', value: 'ul'},
                   {title: 'Content Image', value: 'image'},
